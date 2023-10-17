@@ -1,1 +1,15 @@
+#include <stdio.h>
 
+int main()
+{
+    int n,count;
+    count = 0;
+    scanf("%d",&n);
+    while(n>10){
+        n /= 10;
+        if(n%10==3) count++;
+    }
+    if(n%10==3) count++;
+    printf("There are %d '3' in the number!",count);
+    return 0;
+}
