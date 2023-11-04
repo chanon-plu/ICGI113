@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int Facto(a){
+    int sum=1;
+    for(int i=1;i<=a;i++){
+            sum *= i;
+        }
+    return sum;
+}
+int Com(n,r){
+    int N = Facto(n);
+    int K = Facto(r);
+    int R = Facto(n-r);
+    return N/(K*R);
+}
+int Sum(a){
+    int sum = 0;
+    for(int i=1;i<=a;i++){
+        sum+=i;
+    }
+    return sum;
+}
+
+int main()
+{
+    int choice,n,r,count=0;
+    do{
+        printf("***********************\n");
+        printf("1.Find Factorial\n");
+        printf("2.Find Combinatorial Number\n");
+        printf("3.Find Summation\n");
+        printf("4.Exit the program?\n");
+        printf("Your choice? ");
+        scanf("%d",&choice);
+        switch(choice){
+        case 1:
+            printf("Input the number(n):");
+            scanf("%d",&n);
+            printf("Your Factorial (n!) is %d\n",Facto(n));
+            break;
+        case 2:
+            printf("Input the number(n):");
+            scanf("%d",&n);
+            printf("Input you 'r' ");
+            scanf("%d",&r);
+            printf("Your %dC%d is %d\n",n,r,Com(n,r));
+            break;
+        case 3:
+            printf("Input the number(n):");
+            scanf("%d",&n);
+            printf("Your summation (Sum(n)) is %d\n",Sum(n));
+            break;
+        case 4:
+            count = 1;
+            break;
+        default:
+            printf("Error\n");
+            printf("***********************\n");
+            break;
+        }
+    }while(count==0);
+    return 0;
+}
