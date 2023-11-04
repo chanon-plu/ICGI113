@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define STD 10
+
+int main()
+{
+    int score[STD],sum=0,max,min,st_max=1,st_min=1;
+    char grade[STD];
+    for(int i=0;i<STD;i++){
+        printf("Enter the score number %d: ",i+1);
+        scanf("%d",&score[i]);
+    }
+
+    //find MAX
+    max = score[0];
+    for(int j=0;j<STD;j++){
+        if(max < score[j]){
+            max = score[j];
+            st_max = j+1;
+        }
+    }
+    printf("\n******************************************\n");
+    printf("The Student Number %d got the MAXIMUM score, which is %d points\n",st_max,max);
+
+    //find MIN
+    min = score[0];
+    for(int k=0;k<STD;k++){
+        if(min > score[k]){
+            min = score[k];
+            st_min = k+1;
+        }
+    }
+    printf("The Student Number %d got the MINIMUM score, which is %d points\n",st_min,min);
+
+    //find SUM
+    for(int v=0;v<STD;v++){
+        sum += score[v];
+    }
+
+    //find Average
+    float avg = (float)sum/STD;
+    printf("The Average Score is %.5f\n",avg);
+
+    //create the A indicator and F indicator
+    float A_indicate = avg*1.2,F_indicate = avg*0.8;
+
+    //show each student's grade
+    for(int x=0;x<STD;x++){
+        if(score[x]>A_indicate){
+            printf("The student number %d got %s\n",x+1,"A");
+        }
+        else if (score[x]<F_indicate){
+            printf("The student number %d got %s\n",x+1,"F");
+        }else printf("The student number %d got %s\n",x+1,"C");
+    }
+    printf("******************************************\n");
+    return 0;
+}
