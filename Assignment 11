@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define SIZE 10
+
+struct date{
+	int  dd,mm,yy;
+};
+
+struct student  {
+   		char	name[30] ;
+	 	double	score ;
+		char grade ;
+        struct date dob;  //optional
+};
+
+int main()
+{
+
+    int n,i,j,high,highnum;
+    // getting the number of students
+    printf("How many students? (MAX %d)",SIZE);
+    scanf("%d",&n);
+    struct student st[n];
+    // getting input
+    for (i=0;i<n;i++){
+        printf("Input student %d name:",i+1);
+        scanf("%29s",st[i].name);
+        printf("Score: ");
+        scanf("%lf",&st[i].score);
+        if (st[i].score<60){
+            st[i].grade = 'F';
+        }
+        else if (st[i].score>=60 && st[i].score <=69){
+            st[i].grade = 'C';
+        }
+        else if (st[i].score>=70 && st[i].score <=79){
+            st[i].grade = 'B';
+        }
+        else if (st[i].score>=80 && st[i].score <=100){
+            st[i].grade = 'A';
+        }
+        else{
+            printf("Error wrong score!\n");
+        }
+    }
+    // display the student's score and grade
+    for (i=0;i<n;i++){
+        printf("Name: %s has score %.2lf and grade %c\n",st[i].name,st[i].score,st[i].grade);
+    }
+    printf("==Student with the highest score is==\n");
+    for(i=0;i<n;i++){
+        if (st[i].score < st[i+1].score){
+            high = st[i+1].score;
+            highnum = i+1;
+        }
+    }
+    printf("Name: %s has score %.2lf and grade %c", st[highnum].name,st[highnum].score,st[highnum].grade);
+
+}
