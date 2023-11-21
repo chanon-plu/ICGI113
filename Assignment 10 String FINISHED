@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+    char word[3][20];
+    for (int i=0; i<3;i++){
+        printf("Input string: ");
+        scanf("%s",word[i]);
+    }
+    if (strcmp(word[0], word[1]) > 0) {
+        char temp[2];
+        strcpy(temp, word[0]);
+        strcpy(word[0], word[1]);
+        strcpy(word[1], temp);
+    }
+
+    if (strcmp(word[1], word[2]) > 0) {
+        char temp[2];
+        strcpy(temp, word[1]);
+        strcpy(word[1], word[2]);
+        strcpy(word[2], temp);
+    }
+
+    if (strcmp(word[0], word[1]) > 0) {
+        char temp[2];
+        strcpy(temp, word[0]);
+        strcpy(word[0], word[1]);
+        strcpy(word[1], temp);
+    }
+
+    char string_1[40];
+    strcpy(string_1,word[0]);
+    strcat(string_1,word[2]);
+
+    for(int j=strlen(string_1)-1;j>=0;j--){
+        switch(string_1[j]){
+        case 'a':
+            string_1[j]='A';
+            break;
+        case 'e':
+            string_1[j]='E';
+            break;
+        case 'i':
+            string_1[j]='I';
+            break;
+        case 'o':
+            string_1[j]='O';
+            break;
+        case 'u':
+            string_1[j]='U';
+            break;
+        default:
+            break;
+        }
+    }
+
+    for(int k=strlen(string_1)-1;k>=0;k--){
+        printf("%c",string_1[k]);
+    }
+    return 0;
+}
