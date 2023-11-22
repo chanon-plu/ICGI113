@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MaxRow 10 //array-maximum no of rows
+#define MinRow 1 //array-minimum no of rows
+#define MaxCol 6 //array-maximum no of columns
+#define MinCol 1 //array-minimum no of columns
+
+int RowSize, ColSize;
+
+int ReadArraySize(int MinSize,int MaxSize);
+void DisplayArray(int Array[RowSize][ColSize],int Row,int Col);
+void DisplayTranspose(int Array[RowSize][ColSize],int Row,int Col);
+
+int main()
+{
+
+    RowSize = ReadArraySize(MinRow,MaxRow);
+    ColSize = ReadArraySize(MinCol,MaxCol);
+    int a[RowSize][ColSize];
+    printf("**********************************\n");
+
+    for(int i=0;i<RowSize;i++){
+        for(int j=0;j<ColSize;j++){
+            printf("Input number for Row %d Column %d : ",i+1,j+1);
+            scanf("%d",&a[i][j]);
+        }
+    }
+
+    printf("===Your Matrix===\n");
+
+
+    DisplayArray(a,RowSize,ColSize);
+
+    printf("===Transpose Matrix===\n");
+
+    DisplayTranspose(a,RowSize,ColSize);
+
+
+}
+
+int ReadArraySize(int MinSize,int MaxSize) //read array size, row then column
+{
+    int size;
+	do{
+      	printf(" range[%d..%d] : ",MinSize,MaxSize);
+	    scanf("%d", &size);
+   	}while(size > MaxSize || size <= MinSize);
+
+    return size;
+
+}//end
+
+void DisplayArray(int Array[RowSize][ColSize],int Row,int Col){
+    for(int i=0;i<Row;i++){
+        for(int j=0;j<Col;j++){
+            printf("%d\t",Array[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void DisplayTranspose(int Array[RowSize][ColSize],int Row,int Col){
+    for(int i=0;i<Col;i++){
+            for(int j=0;j<Row;j++){
+                printf("%d\t",Array[j][i]);
+            }
+            printf("\n");
+    }
+}
